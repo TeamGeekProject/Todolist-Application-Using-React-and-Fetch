@@ -10,6 +10,15 @@ import "../../styles/todo.css";
 export const Todo = () => {
   const { store, actions } = useContext(Context);
 
+  if (store.isActivated === false) {
+    actions.createUser();
+  }
+  useEffect(() => {
+    actions.loadSomeData();
+  }, []);
+
+  console.log(store.todoListItems);
+
   return (
     <div className="container">
       <h1 className="Title text-center">Todo List</h1>
@@ -38,36 +47,58 @@ export const Todo = () => {
           <div className="row justify-content-center">
             <div className="col-md-6 col-8">
               <ul className="list-group ">
-                {store.todoListItems.map((item, index) => (
-                  <li className="list-group-item rounded" key={index}>
-                    <span className="float-start items-style">{item}</span>
+                {store.todoListItems.map((item, index) =>
+                  item.label != "sample task" ? (
+                    <li className="list-group-item rounded" key={index}>
+                      <span className="float-start items-style">
+                        {item.label}
+                      </span>
 
-                    <span
-                      className="float-end text-danger"
-                      onClick={() => {
-                        actions.deleteTodoListItem(index);
-                      }}
-                    >
-                      {" "}
-                      <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
-                    </span>
-                  </li>
-                ))}
+                      <span
+                        className="float-end text-danger"
+                        onClick={() => {
+                          actions.deleteTodoListItem(index);
+                        }}
+                      >
+                        {" "}
+                        <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+                      </span>
+                    </li>
+                  ) : null
+                )}
 
                 <div className="itemFilter rounded">
-                  <h2>{store.todoListItems.length} item/s left...</h2>
+                  <h2>
+                    {" "}
+                    {
+                      store.todoListItems.filter(
+                        (item) => item.label !== "sample task"
+                      ).length
+                    }{" "}
+                    item/s left...
+                  </h2>
                 </div>
               </ul>
+
+              <button
+                className="btn mt-2 col-6 itemFilter rounded"
+                onClick={() => {
+                  actions.deleteAll();
+                }}
+              >
+                Be careful! You can delete all
+              </button>
             </div>
           </div>
         </div>
       </div>
-    <br/>
-    <div><Link to="/home">
-    <button className="btn btn-primary">Back home</button>
-  </Link></div>
-  <br/>
-  </div>
+      <br />
+      <div>
+        <Link to="/home">
+          <button className="btn btn-primary">Back home</button>
+        </Link>
+      </div>
+      <br />
+    </div>
   );
 };
-
