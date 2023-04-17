@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       todoListItems: [],
       user: "teamgeekuser",
-      isActivated: false,
+      isActivated: true,
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -14,11 +14,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
         const user = store.user;
         const response = await fetch(
-          `http://assets.breatheco.de/apis/fake/todos/user/${user}`
+          `https://assets.breatheco.de/apis/fake/todos/user/${user}`
         );
         const data = await response.json();
-
         setStore({ todoListItems: data });
+        
       },
 
       deleteTodoListItem: async (index) => {
@@ -27,11 +27,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         const todoListItems = store.todoListItems.filter(
           (item, i) => i !== index
         );
-
+        
+      
         if (todoListItems.length === 0) {
           await fetch(
             `https://assets.breatheco.de/apis/fake/todos/user/${user}`,
-            {
+           {
               method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
@@ -39,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           )
             .then(setStore({ todoListItems: [] }))
-            .catch((error) => console.log(error));
+            .catch((error) => console.log("error"));
 
           setStore({ isActivated: false });
         } else {
@@ -54,9 +55,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           )
             .then(setStore({ todoListItems: todoListItems }))
-            .catch((error) => console.log(error));
+            .catch((error) => console.log("error"));
         }
       },
+    
+        
 
       addTodoListItem: async (item) => {
         const store = getStore();
@@ -78,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         )
           .then(setStore({ todoListItems: todoListItems }))
-          .catch((error) => console.log(error));
+          .catch((error) => console.log("error"));
         // setStore({ todoListItems: todoListItems });
       },
       deleteAll: async () => {
@@ -94,7 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         )
           .then(setStore({ todoListItems: [] }))
-          .catch((error) => console.log(error));
+          .catch((error) => console.log("error"));
 
         setStore({ isActivated: false });
       },
@@ -113,7 +116,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         )
           .then(setStore({ isActivated: true }))
-          .catch((error) => console.log(error));
+          .catch((error) => console.log("error"));
       },
     },
   };

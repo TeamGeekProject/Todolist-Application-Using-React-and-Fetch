@@ -4,11 +4,12 @@ import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect, useContext } from "react";
-
 import "../../styles/todo.css";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 export const Todo = () => {
   const { store, actions } = useContext(Context);
+
 
   if (store.isActivated === false) {
     actions.createUser();
@@ -37,6 +38,7 @@ export const Todo = () => {
                       e.preventDefault();
                       actions.addTodoListItem(e.target.value);
                     }
+                  console.log("SUCCESS")
                   }}
                   //   value={input}
                 ></input>
@@ -59,6 +61,7 @@ export const Todo = () => {
                         onClick={() => {
                           actions.deleteTodoListItem(index);
                         }}
+                        
                       >
                         {" "}
                         <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
