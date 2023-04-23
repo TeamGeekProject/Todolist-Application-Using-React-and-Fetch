@@ -50,40 +50,6 @@ export const Home = () => (
             spacemc2
           </a>
         </div>
-        {/* <ul className=" list-group" id="list-tab" role="tablist">
-          <li>
-            <a
-              className="link-secondary text-decoration-none"
-              href="https://github.com/Balim1"
-            >
-              Balim1
-            </a>
-          </li>
-          <li>
-            <a
-              className="link-secondary text-decoration-none"
-              href="https://github.com/joaarg86"
-            >
-              joaarg86
-            </a>
-          </li>
-          <li>
-            <a
-              className="link-secondary text-decoration-none"
-              href="https://github.com/raulyfs11"
-            >
-              raulyfs11
-            </a>
-          </li>
-          <li>
-            <a
-              className="link-secondary text-decoration-none"
-              href="https://github.com/spacemc2"
-            >
-              spacemc2
-            </a>
-          </li>
-        </ul> */}
       </div>
     </div>
   </div>
