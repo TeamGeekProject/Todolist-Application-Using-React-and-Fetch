@@ -10,7 +10,7 @@ export const Home = () => (
     <div className="row justify-content-center">
       <div className="col-6">
         <p>This project has been created by:</p>
-        <div className="list-group" id="list-tab" role="tablist">
+        {/* <div className="list-group" id="list-tab" role="tablist">
           <Link
             className="list-group-item list-group-item-action itemFilter"
             id="list-home-list"
@@ -83,42 +83,37 @@ export const Home = () => (
           >
             spacemc2
           </Link>
-        </div>
+        </div> */}
 
-        {/* <ul className=" list-group" id="list-tab" role="tablist">
-          <li>
-            <a
-              className="link-secondary text-decoration-none"
-              href="https://github.com/Balim1"
-            >
-              Balim1
-            </a>
-          </li>
-          <li>
-            <a
-              className="link-secondary text-decoration-none"
-              href="https://github.com/joaarg86"
-            >
-              joaarg86
-            </a>
-          </li>
-          <li>
-            <a
-              className="link-secondary text-decoration-none"
-              href="https://github.com/raulyfs11"
-            >
-              raulyfs11
-            </a>
-          </li>
-          <li>
-            <a
-              className="link-secondary text-decoration-none"
-              href="https://github.com/spacemc2"
-            >
-              spacemc2
-            </a>
-          </li>
-        </ul> */}
+        <div class="list-group">
+          <a
+            href="https://github.com/Balim1"
+            class="list-group-item list-group-item-action itemFilter"
+            aria-current="true"
+          >
+            Balim1
+          </a>
+          <a
+            href="https://github.com/joaarg86"
+            class="list-group-item list-group-item-action itemFilter"
+          >
+            joaarg86
+          </a>
+          <a
+            href="https://github.com/raulyfs11"
+            class="list-group-item list-group-item-action itemFilter"
+          >
+            raulyfs11
+          </a>
+          <a
+            href="https://github.com/spacemc2"
+            class="list-group-item list-group-item-action itemFilter"
+            tabindex="-1"
+            aria-disabled="true"
+          >
+            spacemc2
+          </a>
+        </div>
       </div>
     </div>
   </div>
